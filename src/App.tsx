@@ -9,25 +9,13 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-// Get the base URL from the environment or use the repository name for GitHub Pages
-const getBasename = () => {
-  // For Lovable deployment
-  if (window.location.hostname.includes('lovable.app')) {
-    return '/';
-  }
-  // For GitHub Pages deployment
-  if (window.location.hostname.includes('github.io')) {
-    return '/silent-watch-web';
-  }
-  return '/';
-};
-
+// Simplified routing - always use root path for Lovable
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename={getBasename()}>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
