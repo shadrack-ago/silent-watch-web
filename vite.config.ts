@@ -6,7 +6,9 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? '/silent-watch-web/' : '/',
+  // Use conditional base path depending on deployment environment
+  base: process.env.LOVABLE === 'true' ? '/' : 
+        mode === 'production' ? '/silent-watch-web/' : '/',
   server: {
     host: "::",
     port: 8080,

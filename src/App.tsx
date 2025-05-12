@@ -11,6 +11,10 @@ const queryClient = new QueryClient();
 
 // Get the base URL from the environment or use the repository name for GitHub Pages
 const getBasename = () => {
+  // For Lovable deployment
+  if (window.location.hostname.includes('lovable.app')) {
+    return '/';
+  }
   // For GitHub Pages deployment
   if (window.location.hostname.includes('github.io')) {
     return '/silent-watch-web';
